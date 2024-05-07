@@ -35,7 +35,9 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Attack Graph Generator</h1>
+                        <h1 class="big-text-color mx-auto my-0">Attack Graph Generation</h1>
+                        <br>
+                        <br>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Some text about this project that I will write letter</h2>
                         <a class="btn btn-primary" href="#about">Get Started</a>
                     </div>
@@ -51,11 +53,19 @@
                         <p class="text-white-50">
                             Nessus upload and run to be added letter with Preview of the attack graph.
                             <a href="#/">the preview page.</a>
-                            The project will be open source 
                         </p>
+                        <br>
+                        <div class="row input-group-newsletter">
+                            <div class="col"><input class="form-control Custom-Placement" id="NessusPath" type="text" placeholder="Enter the path or Use browse button"/></div>
+                            <div class="col-auto"><button class="btn btn-secondary" id="Browse_Nessus" type="submit">Browse</button></div>
+                        </div>
+                        <br>
+                        <div class="col-auto"><button class="btn btn-info Nessus_Buttons" id="Submit_Nessus" type="submit">Run</button></div>
+                        <br>
+                        <br>
                     </div>
                 </div>
-                <img class="img-fluid" src="{{ url_for('static', filename='assets/img/ipad.png') }}" alt="..." />
+                <!-- <img class="img-fluid" src="{{ url_for('static', filename='assets/img/nmap.png') }}" alt="..." /> -->
             </div>
         </section>
         <!-- Projects-->
