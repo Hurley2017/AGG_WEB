@@ -11215,3 +11215,8 @@ body {
 .Custom-Placement {
   margin-top: 0.65rem;
 }
+
+.pdf_Proper {
+  margin:2rem;
+  aspect-ratio: 4/3;
+}
