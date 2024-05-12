@@ -22,8 +22,8 @@ class Console():
         self.Main = Tk()
         self.Window_Config()
         self.load_Contents()
-        self.Main_T = self.return_T()
-        self.Application = FServer
+        self.Main_T = Thread(target=self.Main_Process)
+        self.server = make_server(self.Local_Host, self.Local_Port, FServer)
 
     #####################################################
     ################## Actual Console ###################
@@ -31,16 +31,12 @@ class Console():
     def get_IP(self):
         return socket.gethostbyname(socket.gethostname())
 
-    def return_T(self):
-        return copy(Thread(target=self.Main_Process)) 
-
     def Excuse_Buffer(self, duration):
         time.sleep(duration)
 
     def Main_Process(self):
         try:
             self.Alive = True
-            self.server = make_server(self.Local_Host, self.Local_Port, self.Application)
             self.server.serve_forever() 
         except Exception as e:
             self.Update_Console('\tError in Main Process: '+str(e))
@@ -77,7 +73,7 @@ class Console():
         self.Button_Frame.grid(row=1, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
         self.Start_Button = Button(self.Button_Frame, text='Start Engine', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='green')  
         self.Start_Button.place(x=Shift+10, y=20)
-        self.Stop_Button = Button(self.Button_Frame, text='Close Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
+        self.Stop_Button = Button(self.Button_Frame, text='Stop Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
         self.Stop_Button.place(x=Shift+280, y=20)
         self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Github_Process, font=('courier', 20, "bold"), fg='white', bg='black')
         self.Github_Button.place(x=Shift+550, y=20)
@@ -146,7 +142,7 @@ class Console():
                 self.Alive = False
                 self.server.shutdown()
                 self.Main_T.join()
-                self.Main_T = self.return_T()
+                self.Main_T = Thread(target=self.Main_Process)
                 self.Update_Console('\tServer stopped...')
         except Exception as e:
             self.Update_Console('\tError Test : '+str(e)) 
@@ -154,4 +150,6 @@ class Console():
 
 if __name__ == "__main__":
     Instance = Console(app)
-    Instance.Start_Engine()
+    Instance.Start_Engine() #lifetime of the console
+    if Instance.Alive:
+        Instance.server.shutdown()        
