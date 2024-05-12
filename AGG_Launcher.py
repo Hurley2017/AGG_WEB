@@ -23,7 +23,7 @@ class Console():
         self.Window_Config()
         self.load_Contents()
         self.Main_T = Thread(target=self.Main_Process)
-        self.server = make_server(self.Local_Host, self.Local_Port, FServer)
+        self.FServer = FServer
 
     #####################################################
     ################## Actual Console ###################
@@ -37,6 +37,7 @@ class Console():
     def Main_Process(self):
         try:
             self.Alive = True
+            self.server = make_server(self.Local_Host, self.Local_Port, self.FServer)
             self.server.serve_forever() 
         except Exception as e:
             self.Update_Console('\tError in Main Process: '+str(e))
