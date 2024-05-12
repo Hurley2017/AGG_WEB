@@ -65,35 +65,38 @@ class Console():
         self.load_Console_Frame()
 
     def load_CFX_HEADER(self):
-        self.Title = Label(self.Main, text='Attack Graph Generator', height=2, font=('Ariel', 25, 'bold'), fg='white', bg='blue4')
+        self.Title = Label(self.Main, text='Attack Graph Generator', height=1, font=('Fixedsys', 20, 'bold'), fg='black', bg='white')
         self.Title.grid(row=0, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
 
     def load_BUTTON_FRAME(self):
-        Shift = 9
-        self.Button_Frame = Frame(self.Main, width=650, height=100, background='lightgray', highlightbackground="black", highlightthickness=1)
+        Shift = 14
+        self.Button_Frame = Frame(self.Main, width=650, height=70, background='lightgray', highlightbackground="black", highlightthickness=1)
         self.Button_Frame.grid(row=1, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
-        self.Start_Button = Button(self.Button_Frame, text='Start Engine', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='green')  
-        self.Start_Button.place(x=Shift+10, y=20)
-        self.Stop_Button = Button(self.Button_Frame, text='Stop Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
-        self.Stop_Button.place(x=Shift+280, y=20)
-        self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Github_Process, font=('courier', 20, "bold"), fg='white', bg='black')
-        self.Github_Button.place(x=Shift+550, y=20)
+        self.Start_Button = Button(self.Button_Frame, text='Start Engine', width=15, height=1, command=self.Start_Process, font=('courier', 15, "bold"), fg='white', bg='green')  
+        self.Start_Button.place(x=Shift+5, y=14)
+        self.Stop_Button = Button(self.Button_Frame, text='Stop Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 15, "bold"), fg='white', bg='red4')  
+        self.Stop_Button.place(x=Shift+205, y=14)
+        self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Github_Process, font=('courier', 15, "bold"), fg='white', bg='black')
+        self.Github_Button.place(x=Shift+405, y=14)
         self.Git_logo = PhotoImage(file='github.png')
-        self.Git_logo = self.Git_logo.subsample(15)
+        self.Git_logo = self.Git_logo.subsample(20)
         self.Git = Label(self.Button_Frame, image=self.Git_logo)
-        self.Git.place(x=Shift+560, y=30)
+        self.Git.place(x=Shift+413, y=21)
+        self.NMap_Button = Button(self.Button_Frame, text='Nmap Scan', width=15, height=1, font=('courier', 15, "bold"), fg='white', bg='blue')
+        self.NMap_Button.place(x=Shift+605, y=14)
     
     def load_Console_Frame(self):
-        self.Console_Frame = Frame(self.Main, width=650, height=327, background='lightgray', highlightbackground="black", highlightthickness=1)
+        self.Console_Frame = Frame(self.Main, width=650, height=400, background='lightgray', highlightbackground="black", highlightthickness=1)
         self.Console_Frame.grid(row=2, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
 
-        self.Console_Out = ScrolledText(self.Console_Frame, width=200,  height= 20, )
+        self.Console_Out = ScrolledText(self.Console_Frame, width=200,  height= 25, )
         self.Console_Out.pack(fill=BOTH, side=LEFT, expand=True)
 
         self.Curr_Data = '''\tHello there.
         This is a standard console.
         Your process states, outputs and error tracebacks will appear here.
-        Do to panic. This Window will keep you updated.'''
+        Do to panic. This Window will keep you updated.
+        Closing the launcher will stop the server.'''
         
         self.Update_Console(self.Curr_Data)
 
