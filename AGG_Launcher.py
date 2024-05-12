@@ -1,24 +1,41 @@
 import os
+from main import app  
+import socket
 from tkinter import *
 from tkinter import messagebox
 from tkinter.scrolledtext import ScrolledText
 import time
+from multiprocessing import Process
 from threading import Thread
+from random import randint
+
 
 class Console():
-    def __init__(self):
+    def __init__(self, FServer):
+        self.Local_Host = self.get_IP()
+        self.Local_Port = str(randint(1001, 9999))
         self.Main = Tk()
         self.Window_Config()
-        self.Memory()
         self.load_Contents()
+        self.init_Threads()
+        self.Application = FServer
 
     #####################################################
     ################## Actual Console ###################
     #####################################################
+    def get_IP(self):
+        return socket.gethostbyname(socket.gethostname())
 
     def Excuse_Buffer(self, duration):
         time.sleep(duration)
     
+    def Main_Process(self):
+        self.Application.run(host=self.Local_Host, port=self.Local_Port)   
+
+    def init_Threads(self):
+        self.Main_T = Thread(target=self.Main_Process)
+        # self.Github_T = Thread(target=self.Github_Process)
+
     def PTrace(self, T):
         return "\t"+"\n\t".join([line for line in T.split('\n')])
 
@@ -55,7 +72,7 @@ class Console():
         self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='black')
         # 
         self.Github_Button.place(x=Shift+550, y=20)
-        self.Git_logo = PhotoImage(file='github.png')
+        self.Git_logo = PhotoImage(file=r'static\assets\img\github.png')
         self.Git_logo = self.Git_logo.subsample(15)
         self.Git = Label(self.Button_Frame, image=self.Git_logo)
         self.Git.place(x=Shift+560, y=30)
@@ -80,25 +97,6 @@ class Console():
         WData += '\n\t----------------------------------------------------------------------\n'
         self.Console_Out.insert('end', WData)
 
-    def Show_Status(self, Process):
-        self.Update_Console('\n\t*Status enquiry called by user for '+Process+' process.*')
-        if Process in self.Processed:
-            messagebox.showinfo('Status', Process+' is completed successfully. Check Results.')
-            return
-        if Process in self.ToBeProcessed:
-            messagebox.showinfo('Status', Process+' is yet not started. Please wait.')
-            return
-        if self.Curr_Status == Process:
-            messagebox.showwarning('Status', Process+' is currently being executed. Please deal with Excel/System dialogues outside the tool.')
-            return
-        messagebox.showerror('Status', Process+' not defined in Memory.')
-        
-    
-    def Memory(self):
-        self.Curr_Status = None
-        self.Processed = []
-        self.ToBeProcessed = ['Excel to PPT', 'Control/Validation']
-
     def Start_Engine(self):
         self.Main.mainloop()
     
@@ -108,10 +106,12 @@ class Console():
 
     def Start_Process(self):
         try:
-            self.Excuse_Buffer(5)
+            self.Update_Console('\tStarting Engine...'+'\n\tLocal Host : '+self.Local_Host+'\n\tLocal Port : '+self.Local_Port+'\n\tDialing Engine...')
+            os.system('start http://'+self.Local_Host+':'+self.Local_Port+'/')
+            self.Main_T.start()
         except Exception as e:
             self.Update_Console('\tError Test : '+str(e))
 
 if __name__ == "__main__":
-    Instance = Console()
+    Instance = Console(app)
     Instance.Start_Engine()
