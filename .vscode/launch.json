@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations" : [
+        {
+            "name": "local",
+            "type": "debugpy",
+            "stopOnEntry": false,
+            "request": "launch",
+            "program" : "AGG_Launcher.py",
+            "console" : "integratedTerminal",
+            "justMyCode" : false,
+        }
+    ]
+}

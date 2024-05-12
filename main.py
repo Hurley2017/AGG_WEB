@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import sys
+from werkzeug.serving import make_server
 import os, signal
 
 def shutdown_server():
@@ -16,8 +18,7 @@ def home():
     
 @app.get('/shutdown')
 def shutdown():
-    raise RuntimeError('Shutdown is invoked by user.')
-    return 'Server shutting down...'
+    sys.exit()
 
 if __name__ == "__main__":
     app.run()

@@ -5,10 +5,12 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.scrolledtext import ScrolledText
 import time
+from copy import copy
 from multiprocessing import Process
 from threading import Thread
 from random import randint
 import traceback
+from werkzeug.serving import make_server
 import requests
 
 
@@ -20,7 +22,7 @@ class Console():
         self.Main = Tk()
         self.Window_Config()
         self.load_Contents()
-        self.Main_T = Thread(target=self.Main_Process)
+        self.Main_T = self.return_T()
         self.Application = FServer
 
     #####################################################
@@ -29,18 +31,17 @@ class Console():
     def get_IP(self):
         return socket.gethostbyname(socket.gethostname())
 
+    def return_T(self):
+        return copy(Thread(target=self.Main_Process)) 
+
     def Excuse_Buffer(self, duration):
         time.sleep(duration)
-    
+
     def Main_Process(self):
         try:
             self.Alive = True
-            try:
-                self.Application.run(host=self.Local_Host, port=self.Local_Port)
-            except RuntimeError as R:
-                self.Update_Console('\tServer balabalalalalal Stopped Internally: '+str(R))
-                self.Update_Console('\tIgnore Traceback...\n\t'+self.PTrace(traceback.format_exc()))  
-                exit(0)  
+            self.server = make_server(self.Local_Host, self.Local_Port, self.Application)
+            self.server.serve_forever() 
         except Exception as e:
             self.Update_Console('\tError in Main Process: '+str(e))
             self.Update_Console('\tMain Process Failed...\n\t'+self.PTrace(traceback.format_exc()))
@@ -76,16 +77,14 @@ class Console():
         self.Button_Frame.grid(row=1, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
         self.Start_Button = Button(self.Button_Frame, text='Start Engine', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='green')  
         self.Start_Button.place(x=Shift+10, y=20)
-        self.Stop_Button = Button(self.Button_Frame, text='Stop Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
+        self.Stop_Button = Button(self.Button_Frame, text='Close Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
         self.Stop_Button.place(x=Shift+280, y=20)
         self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Github_Process, font=('courier', 20, "bold"), fg='white', bg='black')
-        # 
         self.Github_Button.place(x=Shift+550, y=20)
         self.Git_logo = PhotoImage(file='github.png')
         self.Git_logo = self.Git_logo.subsample(15)
         self.Git = Label(self.Button_Frame, image=self.Git_logo)
         self.Git.place(x=Shift+560, y=30)
-
     
     def load_Console_Frame(self):
         self.Console_Frame = Frame(self.Main, width=650, height=327, background='lightgray', highlightbackground="black", highlightthickness=1)
@@ -145,10 +144,10 @@ class Console():
             else:
                 self.Update_Console('\tStopping Engine...')
                 self.Alive = False
-                Response = requests.get('http://'+self.Local_Host+':'+self.Local_Port+'/shutdown')
-                self.Update_Console('\t'+self.PTrace(Response.text))
+                self.server.shutdown()
                 self.Main_T.join()
-                self.Main_T = Thread(target=self.Main_Process)
+                self.Main_T = self.return_T()
+                self.Update_Console('\tServer stopped...')
         except Exception as e:
             self.Update_Console('\tError Test : '+str(e)) 
             self.Update_Console('\tFatal Error...\n\t'+self.PTrace(traceback.format_exc()))         
