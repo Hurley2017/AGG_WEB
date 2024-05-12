@@ -8,16 +8,19 @@ import time
 from multiprocessing import Process
 from threading import Thread
 from random import randint
+import traceback
+import requests
 
 
 class Console():
     def __init__(self, FServer):
+        self.Alive = False
         self.Local_Host = self.get_IP()
         self.Local_Port = str(randint(1001, 9999))
         self.Main = Tk()
         self.Window_Config()
         self.load_Contents()
-        self.init_Threads()
+        self.Main_T = Thread(target=self.Main_Process)
         self.Application = FServer
 
     #####################################################
@@ -30,11 +33,17 @@ class Console():
         time.sleep(duration)
     
     def Main_Process(self):
-        self.Application.run(host=self.Local_Host, port=self.Local_Port)   
-
-    def init_Threads(self):
-        self.Main_T = Thread(target=self.Main_Process)
-        # self.Github_T = Thread(target=self.Github_Process)
+        try:
+            self.Alive = True
+            try:
+                self.Application.run(host=self.Local_Host, port=self.Local_Port)
+            except RuntimeError as R:
+                self.Update_Console('\tServer balabalalalalal Stopped Internally: '+str(R))
+                self.Update_Console('\tIgnore Traceback...\n\t'+self.PTrace(traceback.format_exc()))  
+                exit(0)  
+        except Exception as e:
+            self.Update_Console('\tError in Main Process: '+str(e))
+            self.Update_Console('\tMain Process Failed...\n\t'+self.PTrace(traceback.format_exc()))
 
     def PTrace(self, T):
         return "\t"+"\n\t".join([line for line in T.split('\n')])
@@ -67,12 +76,12 @@ class Console():
         self.Button_Frame.grid(row=1, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
         self.Start_Button = Button(self.Button_Frame, text='Start Engine', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='green')  
         self.Start_Button.place(x=Shift+10, y=20)
-        self.Stop_Button = Button(self.Button_Frame, text='Stop Engine', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
+        self.Stop_Button = Button(self.Button_Frame, text='Stop Engine', width=15, height=1, command=self.Stop_Process, font=('courier', 20, "bold"), fg='white', bg='red4')  
         self.Stop_Button.place(x=Shift+280, y=20)
-        self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Start_Process, font=('courier', 20, "bold"), fg='white', bg='black')
+        self.Github_Button = Button(self.Button_Frame, text=' GitHub', width=15, height=1, command=self.Github_Process, font=('courier', 20, "bold"), fg='white', bg='black')
         # 
         self.Github_Button.place(x=Shift+550, y=20)
-        self.Git_logo = PhotoImage(file=r'static\assets\img\github.png')
+        self.Git_logo = PhotoImage(file='github.png')
         self.Git_logo = self.Git_logo.subsample(15)
         self.Git = Label(self.Button_Frame, image=self.Git_logo)
         self.Git.place(x=Shift+560, y=30)
@@ -103,14 +112,46 @@ class Console():
     #####################################################
     ################# Actual Functions ##################
     #####################################################
+    def Github_Process(self):
+        try:
+            self.Update_Console('\tOpening Github Page...')
+            os.system('start https://github.com/Hurley2017/AGG_WEB')
+        except Exception as e:
+            self.Update_Console('\tError Test : '+str(e))
+            self.Update_Console('\tGithub Process Failed...\n\t'+self.PTrace(traceback.format_exc()))  
+
 
     def Start_Process(self):
         try:
-            self.Update_Console('\tStarting Engine...'+'\n\tLocal Host : '+self.Local_Host+'\n\tLocal Port : '+self.Local_Port+'\n\tDialing Engine...')
-            os.system('start http://'+self.Local_Host+':'+self.Local_Port+'/')
-            self.Main_T.start()
+            if self.Alive:
+                self.Update_Console('\tEngine Already Running...')
+                messagebox.showwarning('Server is Alive', 'Dismiss the alert to open the default browser.')
+                os.system('start http://'+self.Local_Host+':'+self.Local_Port+'/')
+                return
+            else:
+                self.Update_Console('\tStarting Engine...'+'\n\tLocal Host : '+self.Local_Host+'\n\tLocal Port : '+self.Local_Port+'\n\tDialing Engine (Check default browser)...')
+                os.system('start http://'+self.Local_Host+':'+self.Local_Port+'/')
+                self.Main_T.start()
         except Exception as e:
-            self.Update_Console('\tError Test : '+str(e))
+            self.Update_Console('\tError in Process : '+str(e))
+            self.Update_Console('\tStarting Engine Failed...\n\t'+self.PTrace(traceback.format_exc()))  
+
+    def Stop_Process(self):
+        try:
+            if not self.Alive:
+                self.Update_Console('\tEngine is not running...')
+                messagebox.showwarning('Error', 'Server is not alive.')
+                return 
+            else:
+                self.Update_Console('\tStopping Engine...')
+                self.Alive = False
+                Response = requests.get('http://'+self.Local_Host+':'+self.Local_Port+'/shutdown')
+                self.Update_Console('\t'+self.PTrace(Response.text))
+                self.Main_T.join()
+                self.Main_T = Thread(target=self.Main_Process)
+        except Exception as e:
+            self.Update_Console('\tError Test : '+str(e)) 
+            self.Update_Console('\tFatal Error...\n\t'+self.PTrace(traceback.format_exc()))         
 
 if __name__ == "__main__":
     Instance = Console(app)

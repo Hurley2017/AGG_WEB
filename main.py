@@ -16,8 +16,8 @@ def home():
     
 @app.get('/shutdown')
 def shutdown():
-    os.kill(os.getpid(), signal.SIGINT)
+    raise RuntimeError('Shutdown is invoked by user.')
     return 'Server shutting down...'
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     app.run()
