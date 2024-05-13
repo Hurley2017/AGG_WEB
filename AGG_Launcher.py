@@ -20,6 +20,7 @@ class Console():
         self.Main = Tk()
         self.Window_Config()
         self.load_Contents()
+        self.K = None
         self.Main_T = Thread(target=self.Main_Process)
         self.FServer = FServer
 
@@ -38,7 +39,7 @@ class Console():
     def Window_Config(self):
         self.Main.wm_title('Debugging Console X Launcher for Attack Graph Generator')
         width = 850
-        height = 545
+        height = 645
         screen_width = self.Main.winfo_screenwidth()
         screen_height = self.Main.winfo_screenheight()
         x = (screen_width/2) - (width/2)
@@ -56,10 +57,12 @@ class Console():
     def load_CFX_HEADER(self):
         self.Title = Label(self.Main, text='Attack Graph Generator', height=1, font=('Fixedsys', 20, 'bold'), fg='black', bg='white')
         self.Title.grid(row=0, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
+        # self.Init_K = Button(self.Main, text='Initialize K', width=15, height=1, command=self.Choose_K_Window, font=('courier', 10, "bold"), fg='black', bg='gray')
+        # self.Init_K.grid(row=0, column=9, padx=58, pady=10, sticky='e')
 
     def load_BUTTON_FRAME(self):
         Shift = 14
-        self.Button_Frame = Frame(self.Main, width=650, height=70, background='lightgray', highlightbackground="black", highlightthickness=1)
+        self.Button_Frame = Frame(self.Main, width=650, height=120, background='lightgray', highlightbackground="black", highlightthickness=1)
         self.Button_Frame.grid(row=1, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
         self.Start_Button = Button(self.Button_Frame, text='Start Engine', width=15, height=1, command=self.Start_Process, font=('courier', 15, "bold"), fg='white', bg='green')  
         self.Start_Button.place(x=Shift+5, y=14)
@@ -71,10 +74,10 @@ class Console():
         self.NMap_Button.place(x=Shift+605, y=14)
     
     def load_Console_Frame(self):
-        self.Console_Frame = Frame(self.Main, width=650, height=400, background='lightgray', highlightbackground="black", highlightthickness=1)
+        self.Console_Frame = Frame(self.Main, width=650, height=450, background='lightgray', highlightbackground="black", highlightthickness=1)
         self.Console_Frame.grid(row=2, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
 
-        self.Console_Out = ScrolledText(self.Console_Frame, width=200,  height= 25, )
+        self.Console_Out = ScrolledText(self.Console_Frame, width=200,  height= 28, )
         self.Console_Out.pack(fill=BOTH, side=LEFT, expand=True)
 
         self.Curr_Data = '''\tHello there.
@@ -92,9 +95,14 @@ class Console():
     def Start_Engine(self):
         self.Main.mainloop()
     
+    def Choose_K_Window(self):
+        return None
+
+
     #####################################################
     ################# Actual Functions ##################
     #####################################################
+
     def Main_Process(self):
         try:
             self.Alive = True
@@ -113,7 +121,6 @@ class Console():
             self.Update_Console('\tStarting Nmap Scan...')
             self.Excuse_Buffer(10)
             
-            # os.system('nmap --script vuln -sP 192.168.1.1/24 >> out.txt')
         except Exception as e:
             self.Update_Console('\tError in Nmap Scan : '+str(e))
             self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))    
