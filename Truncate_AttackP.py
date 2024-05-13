@@ -3,11 +3,11 @@ import sys
 import time
 from pprint import pprint as p  
 
-K = 1
+K = 2
 
 CVSS_Scores = []
 
-Attack_File = open('attack.P', 'r')
+Attack_File = open('DebugOut/attack.P', 'r')
 Content = Attack_File.read()
 Attack_File.close()
 
@@ -35,7 +35,7 @@ for Server in Servers:
         else:
             P_Map[CVE].append(Pair)  
 
-Nmap_File = open('nmap_all.txt', 'r')
+Nmap_File = open('DebugOut/nmap_all.txt', 'r')
 Nmap_Data = Nmap_File.read().split('\n')    
 Nmap_File.close()
 for CVE in P_Map:
@@ -75,6 +75,6 @@ for Server in Servers:
     New_Data.append("\n".join(Serv_Data))
 
 AttackP = Attack_Header + "\n\n" + "\n\n".join(New_Data)
-AttackOut = open('Tattack.P', 'w')
+AttackOut = open('DebugOut/Tattack.P', 'w')
 AttackOut.write(AttackP)
 AttackOut.close()

@@ -15,7 +15,7 @@ matchCVE = re.compile(r'\bCVE[\d-]+')
 
 MASTER_MAP = {}
 
-f = open('nmap_all.txt','r')
+f = open('DebugOut/nmap_all.txt','r')
 DATA = f.read()
 f.close()
 
@@ -62,10 +62,10 @@ for Content in DATA[1:]:
         else:
             FilteredSeries.append(item) 
     print(FilteredSeries)           
-    VULINFO = open('vul_info1.txt', 'w')
-    for item in FilteredSeries:
-        VULINFO.write(str(item)+'\n')   
-    VULINFO.close()                 
+    # VULINFO = open('vul_info1.txt', 'w')
+    # for item in FilteredSeries:
+    #     VULINFO.write(str(item)+'\n')   
+    # VULINFO.close()                 
     PointStatus = [None, None]
     for item in FilteredSeries:
         if type(item) == int:
@@ -103,7 +103,7 @@ for IP in MASTER_MAP:
 
 # print(mulval_input)
 
-MUL_ATK = open('attack.P', 'w')
+MUL_ATK = open('DebugOut/attack.P', 'w')
 MUL_ATK.write(mulval_input)
 MUL_ATK.close()
 
