@@ -51,6 +51,7 @@ for CVE in P_Map:
             CVSS_Scores.append(float(Line))
             break
 CVSS_Scores = sorted(CVSS_Scores, reverse=True)
+K = min(len(CVSS_Scores), K)
 CVSS_Scores = CVSS_Scores[:K]
 Curated_Map = {}
 Count = 0

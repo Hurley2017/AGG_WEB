@@ -71,7 +71,7 @@ class Console():
         self.NMap_Button = Button(self.Button_Frame, text='Nmap Scan', width=15, height=1, command=self.Start_Nmap_Scan,font=('courier', 15, "bold"), fg='white', bg='blue')
         self.NMap_Button.place(x=Shift+605, y=14)
 
-        self.K_Label = Label(self.Button_Frame, text='Max Vuls : ', height=1, font=('courier', 12, 'bold'), fg='black', bg='lightgray')
+        self.K_Label = Label(self.Button_Frame, text='Max Vuln : ', height=1, font=('courier', 12, 'bold'), fg='black', bg='lightgray')
         self.K_Label.place(x=Shift+10, y=75)
         self.K_Entry = Entry(self.Button_Frame, width=5, font=('courier', 12, 'bold'), fg='black', bg='white')
         self.K_Entry.place(x=Shift+120, y=75)

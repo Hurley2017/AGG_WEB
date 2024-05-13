@@ -4,17 +4,42 @@ attackGoal(execCode(server_192_168_1_1,_)).
 hacl(internet, server_192_168_1_1, 'tcp', 53).
 vulExists(server_192_168_1_1, 'CVE-2020-25682', 'domain').
 vulProperty('CVE-2020-25682', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2021-3448', 'domain').
+vulProperty('CVE-2021-3448', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2020-25684', 'domain').
+vulProperty('CVE-2020-25684', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2022-0934', 'domain').
+vulProperty('CVE-2022-0934', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2023-28450', 'domain').
+vulProperty('CVE-2023-28450', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2020-25686', 'domain').
+vulProperty('CVE-2020-25686', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2020-25683', 'domain').
+vulProperty('CVE-2020-25683', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2017-15107', 'domain').
+vulProperty('CVE-2017-15107', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2019-14834', 'domain').
+vulProperty('CVE-2019-14834', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2020-25685', 'domain').
+vulProperty('CVE-2020-25685', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2020-25687', 'domain').
+vulProperty('CVE-2020-25687', remoteExploit, privEscalation).
 vulExists(server_192_168_1_1, 'CVE-2020-25681', 'domain').
 vulProperty('CVE-2020-25681', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2023-50387', 'domain').
+vulProperty('CVE-2023-50387', remoteExploit, privEscalation).
 networkServiceInfo(server_192_168_1_1, 'domain', 'tcp', 53, 'dnsmasq').
 
 hacl(internet, server_192_168_1_1, 'tcp', 80).
+vulExists(server_192_168_1_1, 'CVE-2018-21028', 'http').
+vulProperty('CVE-2018-21028', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2022-45956', 'http').
+vulProperty('CVE-2022-45956', remoteExploit, privEscalation).
 vulExists(server_192_168_1_1, 'CVE-2018-21027', 'http').
 vulProperty('CVE-2018-21027', remoteExploit, privEscalation).
+vulExists(server_192_168_1_1, 'CVE-2021-33558', 'http').
+vulProperty('CVE-2021-33558', remoteExploit, privEscalation).
 networkServiceInfo(server_192_168_1_1, 'http', 'tcp', 80, 'Boa').
-
-hacl(internet, server_192_168_1_4, 'tcp', 62078).
-networkServiceInfo(server_192_168_1_4, 'tcpwrapped', 'tcp', 62078, '').
 
 hacl(internet, server_192_168_1_14, 'tcp', 135).
 networkServiceInfo(server_192_168_1_14, 'msrpc', 'tcp', 135, 'Microsoft').
