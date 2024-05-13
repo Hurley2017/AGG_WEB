@@ -1,0 +1,19 @@
+attackerLocated(internet).
+attackGoal(execCode(server_192_168_1_14,_)).
+
+hacl(internet, server_192_168_1_1, 'tcp', 53).
+vulExists(server_192_168_1_1, 'CVE-2020-25681', 'domain').
+vulProperty('CVE-2020-25681', remoteExploit, privEscalation).
+networkServiceInfo(server_192_168_1_1, 'domain', 'tcp', 53, 'dnsmasq').
+
+hacl(internet, server_192_168_1_1, 'tcp', 80).
+networkServiceInfo(server_192_168_1_1, 'http', 'tcp', 80, 'Boa').
+
+hacl(internet, server_192_168_1_14, 'tcp', 135).
+networkServiceInfo(server_192_168_1_14, 'msrpc', 'tcp', 135, 'Microsoft').
+
+hacl(internet, server_192_168_1_14, 'tcp', 139).
+networkServiceInfo(server_192_168_1_14, 'netbios-ssn', 'tcp', 139, '').
+
+hacl(internet, server_192_168_1_14, 'tcp', 445).
+networkServiceInfo(server_192_168_1_14, 'microsoft-ds?', 'tcp', 445, '').

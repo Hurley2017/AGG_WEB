@@ -1,0 +1,119 @@
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:34 India Standard Time
+Nmap scan report for 192.168.1.1
+Host is up (0.0036s latency).
+Not shown: 998 filtered tcp ports (no-response)
+PORT   STATE SERVICE VERSION
+53/tcp open  domain  dnsmasq 2.78
+| vulners: 
+|   cpe:/a:thekelleys:dnsmasq:2.78: 
+|     	PRION:CVE-2020-25682	8.3	https://vulners.com/prion/PRION:CVE-2020-25682
+|     	PRION:CVE-2020-25681	8.3	https://vulners.com/prion/PRION:CVE-2020-25681
+|     	CVE-2020-25682	8.3	https://vulners.com/cve/CVE-2020-25682
+|     	CVE-2020-25681	8.3	https://vulners.com/cve/CVE-2020-25681
+|     	PRION:CVE-2020-25687	7.1	https://vulners.com/prion/PRION:CVE-2020-25687
+|     	PRION:CVE-2020-25683	7.1	https://vulners.com/prion/PRION:CVE-2020-25683
+|     	CVE-2020-25687	7.1	https://vulners.com/cve/CVE-2020-25687
+|     	CVE-2020-25683	7.1	https://vulners.com/cve/CVE-2020-25683
+|     	PRION:CVE-2023-50387	5.0	https://vulners.com/prion/PRION:CVE-2023-50387
+|     	PRION:CVE-2023-28450	5.0	https://vulners.com/prion/PRION:CVE-2023-28450
+|     	PRION:CVE-2022-0934	5.0	https://vulners.com/prion/PRION:CVE-2022-0934
+|     	PRION:CVE-2017-15107	5.0	https://vulners.com/prion/PRION:CVE-2017-15107
+|     	OSV:CVE-2017-15107	5.0	https://vulners.com/osv/OSV:CVE-2017-15107
+|     	CVE-2023-28450	5.0	https://vulners.com/cve/CVE-2023-28450
+|     	CVE-2022-0934	5.0	https://vulners.com/cve/CVE-2022-0934
+|     	CVE-2017-15107	5.0	https://vulners.com/cve/CVE-2017-15107
+|     	BB688FBF-CEE2-5DD1-8561-8F76501DE2D4	5.0	https://vulners.com/githubexploit/BB688FBF-CEE2-5DD1-8561-8F76501DE2D4	*EXPLOIT*
+|     	79068BEF-A572-5A8A-88D0-177524BDAAFE	5.0	https://vulners.com/githubexploit/79068BEF-A572-5A8A-88D0-177524BDAAFE	*EXPLOIT*
+|     	PRION:CVE-2021-3448	4.3	https://vulners.com/prion/PRION:CVE-2021-3448
+|     	PRION:CVE-2020-25686	4.3	https://vulners.com/prion/PRION:CVE-2020-25686
+|     	PRION:CVE-2020-25685	4.3	https://vulners.com/prion/PRION:CVE-2020-25685
+|     	PRION:CVE-2020-25684	4.3	https://vulners.com/prion/PRION:CVE-2020-25684
+|     	PRION:CVE-2019-14834	4.3	https://vulners.com/prion/PRION:CVE-2019-14834
+|     	CVE-2021-3448	4.3	https://vulners.com/cve/CVE-2021-3448
+|     	CVE-2020-25686	4.3	https://vulners.com/cve/CVE-2020-25686
+|     	CVE-2020-25685	4.3	https://vulners.com/cve/CVE-2020-25685
+|     	CVE-2020-25684	4.3	https://vulners.com/cve/CVE-2020-25684
+|     	CVE-2019-14834	4.3	https://vulners.com/cve/CVE-2019-14834
+|_    	CBF3EF2D-3A5B-5110-A374-4A5ADE9AC91A	4.3	https://vulners.com/githubexploit/CBF3EF2D-3A5B-5110-A374-4A5ADE9AC91A	*EXPLOIT*
+80/tcp open  http    Boa HTTPd 0.94.13
+| vulners: 
+|   cpe:/a:boa:boa:0.94.13: 
+|     	PRION:CVE-2018-21027	7.5	https://vulners.com/prion/PRION:CVE-2018-21027
+|     	CVE-2018-21027	7.5	https://vulners.com/cve/CVE-2018-21027
+|     	PRION:CVE-2022-45956	5.0	https://vulners.com/prion/PRION:CVE-2022-45956
+|     	PRION:CVE-2021-33558	5.0	https://vulners.com/prion/PRION:CVE-2021-33558
+|     	PRION:CVE-2018-21028	5.0	https://vulners.com/prion/PRION:CVE-2018-21028
+|     	CVE-2022-45956	5.0	https://vulners.com/cve/CVE-2022-45956
+|     	CVE-2021-33558	5.0	https://vulners.com/cve/CVE-2021-33558
+|     	CVE-2018-21028	5.0	https://vulners.com/cve/CVE-2018-21028
+|_    	5CA8912F-DD9C-5C61-B531-3A008D744511	5.0	https://vulners.com/githubexploit/5CA8912F-DD9C-5C61-B531-3A008D744511	*EXPLOIT*
+|_http-server-header: Boa/0.94.13
+MAC Address: 44:95:3B:75:00:10 (RLTech India Private Limited)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.73 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:34 India Standard Time
+Nmap scan report for 192.168.1.5
+Host is up (0.0071s latency).
+All 1000 scanned ports on 192.168.1.5 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 96:2A:60:9D:C8:90 (Unknown)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1.93 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:34 India Standard Time
+Nmap scan report for 192.168.1.9
+Host is up (0.040s latency).
+All 1000 scanned ports on 192.168.1.9 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 00:E9:3A:0B:24:87 (AzureWave Technology)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 43.92 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:35 India Standard Time
+Nmap scan report for 192.168.1.10
+Host is up (0.0020s latency).
+All 1000 scanned ports on 192.168.1.10 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 78:8C:B5:D2:DC:09 (Unknown)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 23.72 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:36 India Standard Time
+Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
+Nmap done: 1 IP address (0 hosts up) scanned in 2.13 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:36 India Standard Time
+Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
+Nmap done: 1 IP address (0 hosts up) scanned in 2.07 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:36 India Standard Time
+Nmap scan report for 192.168.1.18
+Host is up (0.065s latency).
+All 1000 scanned ports on 192.168.1.18 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 98:01:A7:B2:EF:5F (Apple)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 69.02 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:37 India Standard Time
+Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
+Nmap done: 1 IP address (0 hosts up) scanned in 2.07 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-13 21:37 India Standard Time
+Nmap scan report for 192.168.1.14
+Host is up (0.0014s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.10 seconds
