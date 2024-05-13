@@ -1,6 +1,6 @@
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:19 India Standard Time
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:44 India Standard Time
 Nmap scan report for 192.168.1.1
-Host is up (0.0050s latency).
+Host is up (0.0022s latency).
 Not shown: 998 filtered tcp ports (no-response)
 PORT   STATE SERVICE VERSION
 53/tcp open  domain  dnsmasq 2.78
@@ -51,27 +51,24 @@ PORT   STATE SERVICE VERSION
 MAC Address: 44:95:3B:75:00:10 (RLTech India Private Limited)
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 13.24 seconds
+Nmap done: 1 IP address (1 host up) scanned in 12.84 seconds
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:20 India Standard Time
-Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
-Nmap done: 1 IP address (0 hosts up) scanned in 1.81 seconds
-
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:20 India Standard Time
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:44 India Standard Time
 Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
 Nmap done: 1 IP address (0 hosts up) scanned in 1.80 seconds
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:20 India Standard Time
-Nmap scan report for 192.168.1.6
-Host is up (0.0039s latency).
-All 1000 scanned ports on 192.168.1.6 are in ignored states.
-Not shown: 1000 closed tcp ports (reset)
-MAC Address: 26:9C:1F:F2:20:5C (Unknown)
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:44 India Standard Time
+Nmap scan report for 192.168.1.4
+Host is up (0.0074s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT      STATE SERVICE    VERSION
+62078/tcp open  tcpwrapped
+MAC Address: 02:DA:38:21:AE:E6 (Unknown)
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 1.11 seconds
+Nmap done: 1 IP address (1 host up) scanned in 1.68 seconds
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:20 India Standard Time
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:44 India Standard Time
 Nmap scan report for 192.168.1.10
 Host is up (0.0010s latency).
 All 1000 scanned ports on 192.168.1.10 are in ignored states.
@@ -79,25 +76,31 @@ Not shown: 1000 filtered tcp ports (no-response)
 MAC Address: 78:8C:B5:D2:DC:09 (Unknown)
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 25.31 seconds
+Nmap done: 1 IP address (1 host up) scanned in 25.09 seconds
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:20 India Standard Time
-Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
-Nmap done: 1 IP address (0 hosts up) scanned in 1.80 seconds
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:45 India Standard Time
+Nmap scan report for 192.168.1.12
+Host is up (0.0039s latency).
+All 1000 scanned ports on 192.168.1.12 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 62:B5:4C:08:52:56 (Unknown)
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:20 India Standard Time
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1.24 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:45 India Standard Time
 Nmap scan report for 192.168.1.18
-Host is up (0.075s latency).
+Host is up (0.10s latency).
 All 1000 scanned ports on 192.168.1.18 are in ignored states.
 Not shown: 1000 filtered tcp ports (no-response)
 MAC Address: 98:01:A7:B2:EF:5F (Apple)
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 78.26 seconds
+Nmap done: 1 IP address (1 host up) scanned in 105.75 seconds
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:21 India Standard Time
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-14 01:47 India Standard Time
 Nmap scan report for 192.168.1.14
-Host is up (0.00076s latency).
+Host is up (0.00068s latency).
 Not shown: 997 closed tcp ports (reset)
 PORT    STATE SERVICE       VERSION
 135/tcp open  msrpc         Microsoft Windows RPC
@@ -106,4 +109,4 @@ PORT    STATE SERVICE       VERSION
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 6.58 seconds
+Nmap done: 1 IP address (1 host up) scanned in 6.74 seconds

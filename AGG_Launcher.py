@@ -110,8 +110,8 @@ class Console():
     def Start_Engine(self):
         self.Main.mainloop()
     
-    def Choose_K_Window(self):
-        return None
+    def show_Busy(self):
+        messagebox.showwarning('Already Running', 'Nmap is scanning your network. Please wait...')
 
 
     #####################################################
@@ -134,13 +134,19 @@ class Console():
     def Invoke_Nmap_Scan(self):
         try:
             self.Update_Console('\tStarting Nmap Scan...')
-            K = int(self.K_Entry.get()) 
+            self.NMap_Button = Button(self.Button_Frame, text='Scanning', width=15, height=1, command=self.show_Busy,font=('courier', 15, "bold"), fg='white', bg='darkorange')
+            self.NMap_Button.place(x=14+605, y=14)
+            K = self.K_Entry.get()
+            K = int(K) if K != '' else None
             CIDR = self.CIDR_Entry1.get()+'/'+self.CIDR_Entry2.get()
             Target = self.Target_Entry.get()
             self.Nmap_SCAN(CIDR, Target, K)
         except Exception as e:
             self.Update_Console('\tError in Nmap Scan : '+str(e))
-            self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))    
+            self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))  
+        finally:
+            self.NMap_Button = Button(self.Button_Frame, text='Nmap Scan', width=15, height=1, command=self.Start_Nmap_Scan,font=('courier', 15, "bold"), fg='white', bg='blue')
+            self.NMap_Button.place(x=14+605, y=14)      
 
     def Nmap_SCAN(self, CIDR, Target, K):
         Check_Nmap = r'"C:\Program Files (x86)\Nmap\scripts\vulners.nse"'
@@ -152,9 +158,12 @@ class Console():
             File.close()
             Data = Data.split("\n")[1:]
             Data = [D.split(' ')[-1] for D in Data if ".".join(CIDR.split(".")[:-1]) in D]
+            self.Update_Console(f'\tFound {len(Data)} Alive Hosts in the network...')
+            self.Update_Console(f'\tHosts Alive : {",\n\t\t\t".join(Data)}')
+            self.Update_Console('\tScanning for Vulnerabilities...')
             Scan_Result = []
             for Ip in Data:
-                print(Ip)
+                self.Update_Console(f'\tScanning {Ip}')
                 Scan_Result.append(os.popen(f"nmap -sV --script={Check_Nmap} {Ip}").read())
 
             Scan_Result = "\n".join(Scan_Result)
@@ -162,14 +171,18 @@ class Console():
             File = open("DebugOut/nmap_all.txt", "w")
             File.write(Scan_Result)
             File.close()
+            self.Update_Console('\tNmap Scan Completed...')
+            self.Update_Console(f'\tGenerating MulVAL input for {Target} ...')
             os.system(f"python3 mulval_inp_gen.py {Target}")
+            self.Update_Console('\tattack.P generated for MulVAL...')
             if K != None:
+                self.Update_Console('\tMulVAL input file will be truncated as per Max Vuln...')
                 os.system(f"python3 truncate_attackP.py {K}")
-            messagebox.showinfo('Nmap Scan', 'Nmap Scan Completed. Output can be found in DebugOut folder.')    
+            self.Update_Console('\tNmap Scan Please check DebugOut Folder...')    
+            messagebox.showinfo('Successful','Output can be found in DebugOut folder.')    
         except Exception as e:
             self.Update_Console('\tError in Nmap Scan : '+str(e))
             self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))
-
     
 
     def Github_Process(self):
