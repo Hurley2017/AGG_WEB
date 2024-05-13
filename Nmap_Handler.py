@@ -4,11 +4,10 @@ import time
 
 Scan_Result = []
 
-Vulners = r'"C:\Program Files (x86)\Nmap\scripts\vulners.nse"'
+Vulners = '"C:\Program Files (x86)\Nmap\scripts\vulners.nse"'
 
 CIDR = '192.168.1.1/24'
-os.system("nmap -sP 192.168.1.1/24 -oN DebugOut/Nmap_scan.txt")  
-time.sleep(5)
+os.system("nmap -sP 192.168.1.1/24 -oN DebugOut/Nmap_scan.txt")
 File = open("DebugOut/nmap_scan.txt", "r")
 Data = File.read()
 File.close()

@@ -3,7 +3,12 @@ import sys
 import time
 from pprint import pprint as p  
 
-K = 2
+if len(sys.argv) == 2: 
+    K = int(sys.argv[1])
+else:
+    print("Usage: python mulval_inp_gen.py <TARGET>")
+    print('Specify target.')
+    exit(1) 
 
 CVSS_Scores = []
 

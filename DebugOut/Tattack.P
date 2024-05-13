@@ -9,6 +9,8 @@ vulProperty('CVE-2020-25682', remoteExploit, privEscalation).
 networkServiceInfo(server_192_168_1_1, 'domain', 'tcp', 53, 'dnsmasq').
 
 hacl(internet, server_192_168_1_1, 'tcp', 80).
+vulExists(server_192_168_1_1, 'CVE-2018-21027', 'http').
+vulProperty('CVE-2018-21027', remoteExploit, privEscalation).
 networkServiceInfo(server_192_168_1_1, 'http', 'tcp', 80, 'Boa').
 
 hacl(internet, server_192_168_1_14, 'tcp', 135).

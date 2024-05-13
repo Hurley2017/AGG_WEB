@@ -57,8 +57,6 @@ class Console():
     def load_CFX_HEADER(self):
         self.Title = Label(self.Main, text='Attack Graph Generator', height=1, font=('Fixedsys', 20, 'bold'), fg='black', bg='white')
         self.Title.grid(row=0, column=0, padx=10, pady=5, columnspan=10, sticky='ew')
-        # self.Init_K = Button(self.Main, text='Initialize K', width=15, height=1, command=self.Choose_K_Window, font=('courier', 10, "bold"), fg='black', bg='gray')
-        # self.Init_K.grid(row=0, column=9, padx=58, pady=10, sticky='e')
 
     def load_BUTTON_FRAME(self):
         Shift = 14
@@ -89,7 +87,6 @@ class Console():
         self.Target_Label.place(x=Shift+540, y=75)
         self.Target_Entry = Entry(self.Button_Frame, width=15, font=('courier', 12, 'bold'), fg='black', bg='white')
         self.Target_Entry.place(x=Shift+640, y=75)
-
     
     def load_Console_Frame(self):
         self.Console_Frame = Frame(self.Main, width=650, height=450, background='lightgray', highlightbackground="black", highlightthickness=1)
@@ -137,11 +134,43 @@ class Console():
     def Invoke_Nmap_Scan(self):
         try:
             self.Update_Console('\tStarting Nmap Scan...')
-            self.Excuse_Buffer(10)
-            
+            K = int(self.K_Entry.get()) 
+            CIDR = self.CIDR_Entry1.get()+'/'+self.CIDR_Entry2.get()
+            Target = self.Target_Entry.get()
+            self.Nmap_SCAN(CIDR, Target, K)
         except Exception as e:
             self.Update_Console('\tError in Nmap Scan : '+str(e))
             self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))    
+
+    def Nmap_SCAN(self, CIDR, Target, K):
+        Check_Nmap = r'"C:\Program Files (x86)\Nmap\scripts\vulners.nse"'
+        try:
+            self.Update_Console('\tScanning Network...')
+            os.system(f"nmap -sP {CIDR} -oN DebugOut/Nmap_scan.txt")
+            File = open("DebugOut/nmap_scan.txt", "r")
+            Data = File.read()
+            File.close()
+            Data = Data.split("\n")[1:]
+            Data = [D.split(' ')[-1] for D in Data if ".".join(CIDR.split(".")[:-1]) in D]
+            Scan_Result = []
+            for Ip in Data:
+                print(Ip)
+                Scan_Result.append(os.popen(f"nmap -sV --script={Check_Nmap} {Ip}").read())
+
+            Scan_Result = "\n".join(Scan_Result)
+
+            File = open("DebugOut/nmap_all.txt", "w")
+            File.write(Scan_Result)
+            File.close()
+            os.system(f"python3 mulval_inp_gen.py {Target}")
+            if K != None:
+                os.system(f"python3 truncate_attackP.py {K}")
+            messagebox.showinfo('Nmap Scan', 'Nmap Scan Completed. Output can be found in DebugOut folder.')    
+        except Exception as e:
+            self.Update_Console('\tError in Nmap Scan : '+str(e))
+            self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))
+
+    
 
     def Github_Process(self):
         try:
