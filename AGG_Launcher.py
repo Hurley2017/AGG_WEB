@@ -72,6 +72,24 @@ class Console():
         self.Github_Button.place(x=Shift+405, y=14)
         self.NMap_Button = Button(self.Button_Frame, text='Nmap Scan', width=15, height=1, command=self.Start_Nmap_Scan,font=('courier', 15, "bold"), fg='white', bg='blue')
         self.NMap_Button.place(x=Shift+605, y=14)
+
+        self.K_Label = Label(self.Button_Frame, text='Max Vuls : ', height=1, font=('courier', 12, 'bold'), fg='black', bg='lightgray')
+        self.K_Label.place(x=Shift+10, y=75)
+        self.K_Entry = Entry(self.Button_Frame, width=5, font=('courier', 12, 'bold'), fg='black', bg='white')
+        self.K_Entry.place(x=Shift+120, y=75)
+
+        self.CIDR_Label = Label(self.Button_Frame, text='CIDR :                  /', height=1, font=('courier', 12, 'bold'), fg='black', bg='lightgray')
+        self.CIDR_Label.place(x=Shift+220, y=75)
+        self.CIDR_Entry1 = Entry(self.Button_Frame, width=15, font=('courier', 12, 'bold'), fg='black', bg='white')
+        self.CIDR_Entry1.place(x=Shift+300, y=75)
+        self.CIDR_Entry2 = Entry(self.Button_Frame, width=2, font=('courier', 12, 'bold'), fg='black', bg='white')
+        self.CIDR_Entry2.place(x=Shift+480, y=75)
+
+        self.Target_Label = Label(self.Button_Frame, text='Target : ', height=1, font=('courier', 12, 'bold'), fg='black', bg='lightgray')
+        self.Target_Label.place(x=Shift+540, y=75)
+        self.Target_Entry = Entry(self.Button_Frame, width=15, font=('courier', 12, 'bold'), fg='black', bg='white')
+        self.Target_Entry.place(x=Shift+640, y=75)
+
     
     def load_Console_Frame(self):
         self.Console_Frame = Frame(self.Main, width=650, height=450, background='lightgray', highlightbackground="black", highlightthickness=1)
