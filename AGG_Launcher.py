@@ -140,6 +140,14 @@ class Console():
             K = int(K) if K != '' else None
             CIDR = self.CIDR_Entry1.get()+'/'+self.CIDR_Entry2.get()
             Target = self.Target_Entry.get()
+            if CIDR == '/':
+                CIDR = self.Local_Host+'/24'
+                self.Update_Console(f'\tCIDR not specified. Default CIDR({CIDR}) will be considered...')
+            if K == None:
+                self.Update_Console('\tMax Vuln not specified. All vulnerabilities will be considered...')
+            if Target == '':                  
+                Target = self.Local_Host 
+                self.Update_Console(f'\tTarget not specified. Default target({Target}), Current host will be considered...') 
             self.Nmap_SCAN(CIDR, Target, K)
         except Exception as e:
             self.Update_Console('\tError in Nmap Scan : '+str(e))

@@ -81,6 +81,6 @@ for Server in Servers:
     New_Data.append("\n".join(Serv_Data))
 
 AttackP = Attack_Header + "\n\n" + "\n\n".join(New_Data)
-AttackOut = open('DebugOut/Tattack.P', 'w')
+AttackOut = open('DebugOut/attack.P', 'w')
 AttackOut.write(AttackP)
 AttackOut.close()

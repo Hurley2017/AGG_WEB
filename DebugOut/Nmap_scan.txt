@@ -1,25 +1,19 @@
-# Nmap 7.94 scan initiated Tue May 14 01:50:08 2024 as: nmap -sP -oN DebugOut/Nmap_scan.txt 192.168.1.1/24
+# Nmap 7.94 scan initiated Tue May 14 02:08:42 2024 as: nmap -sP -oN DebugOut/Nmap_scan.txt 192.168.1.14/24
 Nmap scan report for 192.168.1.1
-Host is up (0.0070s latency).
+Host is up (0.0060s latency).
 MAC Address: 44:95:3B:75:00:10 (RLTech India Private Limited)
 Nmap scan report for 192.168.1.3
-Host is up (0.051s latency).
+Host is up (0.065s latency).
 MAC Address: FA:60:7C:29:36:ED (Unknown)
-Nmap scan report for 192.168.1.5
-Host is up (0.046s latency).
-MAC Address: 96:2A:60:9D:C8:90 (Unknown)
 Nmap scan report for 192.168.1.8
-Host is up (0.041s latency).
+Host is up (0.050s latency).
 MAC Address: 64:A2:00:CE:6F:ED (Xiaomi Communications)
 Nmap scan report for 192.168.1.10
-Host is up (0.0010s latency).
+Host is up (0.0020s latency).
 MAC Address: 78:8C:B5:D2:DC:09 (Unknown)
-Nmap scan report for 192.168.1.12
-Host is up (0.0055s latency).
-MAC Address: 62:B5:4C:08:52:56 (Unknown)
 Nmap scan report for 192.168.1.18
-Host is up (0.038s latency).
+Host is up (0.046s latency).
 MAC Address: 98:01:A7:B2:EF:5F (Apple)
 Nmap scan report for 192.168.1.14
 Host is up.
-# Nmap done at Tue May 14 01:50:12 2024 -- 256 IP addresses (8 hosts up) scanned in 3.99 seconds
+# Nmap done at Tue May 14 02:08:46 2024 -- 256 IP addresses (6 hosts up) scanned in 3.82 seconds
