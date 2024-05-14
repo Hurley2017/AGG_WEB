@@ -165,7 +165,7 @@ class Console():
             Data = File.read()
             File.close()
             Data = Data.split("\n")[1:]
-            Data = [D.split(' ')[-1] for D in Data if ".".join(CIDR.split(".")[:-1]) in D]
+            Data = [D.split(' ')[-1].strip('(').strip(')') for D in Data if ".".join(CIDR.split(".")[:-1]) in D]
             self.Update_Console(f'\tFound {len(Data)} Alive Hosts in the network...')
             self.Update_Console(f'\tHosts Alive : {",\n\t\t\t".join(Data)}')
             self.Update_Console('\tScanning for Vulnerabilities...')
