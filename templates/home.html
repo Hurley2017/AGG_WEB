@@ -46,28 +46,25 @@
             </div>
         </header>
         <!-- About-->
-        <section class="about-section text-center" id="nessus">
+        <section class="projects-section bg-light" id="nessus">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Run using Nessus XML Report</h2>
-                        <p class="text-white-50">
-                            Nessus upload and run to be added letter with Preview of the attack graph.
+                        <h2 class="text-black mb-4">Run using Nessus Scan</h2>
+                        <p class="text-black-50">
+                            Nessus XML results are used to generate the attack graph. The scan will be run on the local machine.
                         </p>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control Custom-Placement" id="NessusPath" type="text" placeholder="Enter the path or Use browse button"/></div>
-                            <div class="col-auto"><button class="btn btn-secondary" id="Browse_Nessus" type="submit">Browse</button></div>
+                            <!-- <div class="col"><input class="form-control Custom-Placement" id="NessusPath" type="text" placeholder="Enter the path or Use browse button"/></div> -->
+                            <div class="col-auto"><button class="btn btn-secondary" id="Browse_Nessus" type="submit" onclick="Browse_Send_Nessus()">Process</button></div>
+                            <div id="Nesout"></div>
                         </div>
-                        <br>
-                        <div class="col-auto"><button class="btn btn-info Nessus_Buttons" id="Submit_Nessus" type="submit">Run</button></div>
-                        <br>
-                        <br>
                     </div>
                 </div>
                 <!-- <img class="img-fluid" src="{{ url_for('static', filename='assets/img/nmap.png') }}" alt="..." /> -->
             </div>
-        </section>
+            </section> 
         
         <!-- Projects-->
         <section class="projects-section bg-light" id="nmap">
@@ -81,7 +78,8 @@
                         <br>
                         <div class="row input-group-newsletter">
                             <!-- <div class="col"><input class="form-control Custom-Placement" id="NessusPath" type="text" placeholder="Enter the path or Use browse button"/></div> -->
-                            <div class="col-auto"><button class="btn btn-secondary" id="Browse_Nessus" type="submit">Run</button></div>
+                            <div class="col-auto"><button class="btn btn-secondary" id="Browse_Nmap" type="submit" onclick="Browse_Send_Nmap()">Process</button></div>
+                            <div id="Mapout"></div>
                         </div>
                     </div>
                 </div>
@@ -150,7 +148,8 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

@@ -172,7 +172,7 @@ class Console():
             Scan_Result = []
             for Ip in Data:
                 self.Update_Console(f'\tScanning {Ip}')
-                Scan_Result.append(os.popen(f"nmap -sV --script={Check_Nmap} {Ip}").read())
+                Scan_Result.append(os.popen(f"nmap -sV -Pn --script={Check_Nmap} {Ip}").read())
 
             Scan_Result = "\n".join(Scan_Result)
 
@@ -181,11 +181,11 @@ class Console():
             File.close()
             self.Update_Console('\tNmap Scan Completed...')
             self.Update_Console(f'\tGenerating MulVAL input for {Target} ...')
-            os.system(f"python3 mulval_inp_gen.py {Target}")
+            os.system(f"python mulval_inp_gen.py {Target}")
             self.Update_Console('\tattack.P generated for MulVAL...')
             if K != None:
                 self.Update_Console('\tMulVAL input file will be truncated as per Max Vuln...')
-                os.system(f"python3 truncate_attackP.py {K}")
+                os.system(f"python truncate_attackP.py {K}")
             self.Update_Console('\tNmap Scan Please check DebugOut Folder...')    
             messagebox.showinfo('Successful','Output can be found in DebugOut folder.')    
         except Exception as e:
