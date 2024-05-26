@@ -98,7 +98,9 @@ class Console():
         self.Curr_Data = '''\tHello there.
         This is a standard console.
         Your process states, outputs and error tracebacks will appear here.
-        Closing the launcher will stop the server.'''
+        Closing the launcher will stop the server.
+        The Nessus scan is proprietary software and cannot be scripted to run here. 
+        However, the UI accepts a Nessus scan to generate an attack graph.'''
         
         self.Update_Console(self.Curr_Data)
 

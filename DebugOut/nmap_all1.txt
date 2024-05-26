@@ -1,0 +1,61 @@
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-26 14:23 India Standard Time
+Nmap scan report for 192.168.0.1
+Host is up (0.016s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     Dropbear sshd 2012.55 (protocol 2.0)
+|_vulners: ERROR: Script execution failed (use -d to debug)
+80/tcp    open  http    TP-LINK WR841N WAP http config
+|_http-server-header: Router Webserver
+1900/tcp  open  upnp    ipOS upnpd (TP-LINK TL-WR841N WAP 11.0; UPnP 1.0)
+49152/tcp open  http    Huawei HG8245T modem http config
+MAC Address: 98:DE:D0:BD:AA:6E (TP-Link Technologies)
+Service Info: OSs: Linux, ipOS 7.0; Devices: WAP, broadband router; CPE: cpe:/o:linux:linux_kernel, cpe:/h:tp-link:wr841n, cpe:/h:tp-link:tl-wr841n, cpe:/o:ubicom:ipos:7.0, cpe:/h:huawei:hg8245t
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 88.92 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-26 14:25 India Standard Time
+Nmap scan report for 192.168.0.100
+Host is up (0.012s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE         VERSION
+8008/tcp open  http?
+8009/tcp open  ssl/castv2      Ninja Sphere Chromecast driver
+8443/tcp open  ssl/https-alt?
+9000/tcp open  ssl/cslistener?
+MAC Address: B4:60:77:42:BB:D2 (Sichuan Changhong Electric)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 97.56 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-26 14:26 India Standard Time
+Nmap done: 1 IP address (0 hosts up) scanned in 1.81 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-26 14:26 India Standard Time
+Nmap scan report for 192.168.0.104
+Host is up (0.018s latency).
+Not shown: 995 closed tcp ports (reset)
+PORT      STATE SERVICE         VERSION
+8008/tcp  open  http?
+8009/tcp  open  ssl/ajp13?
+8443/tcp  open  ssl/https-alt?
+9000/tcp  open  ssl/cslistener?
+10001/tcp open  ssl/scp-config?
+MAC Address: 20:50:E7:97:6C:58 (Ampak Technology)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 136.79 seconds
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-26 14:29 India Standard Time
+Nmap scan report for 192.168.0.107
+Host is up (0.00033s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.76 seconds

@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request
 import os, signal
+import requests
+
+url = "http://localhost:3000/push_attackP"
 
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
@@ -28,11 +31,23 @@ def pNessus():
 def pNmap():
     data = request.json
     data = data['data']
-    print(data)
     file = open('DebugOut/nmap_all1.txt', 'w')
+    file.write(data)
     file.close()
     os.system(f'python mulval_inp_gen.py DebugOut/nmap_all1.txt')
-    return {'data' : 'done'}
+
+    File = open("DebugOut/attack.P", "r")
+    Content = File.read()
+    File.close()
+
+    Response = requests.post(url, data=Content)
+
+    File = open("DebugOut/AG.pdf", "wb")
+    File.write(Response.content)
+    File.close()
+
+    return {'Hello' : 'World'}
+    
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, port=5000)

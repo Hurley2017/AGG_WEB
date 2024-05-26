@@ -1,3 +1,51 @@
 attackerLocated(internet).
 attackGoal(execCode(server_DebugOut/nmap_all1_txt,_)).
 
+hacl(internet, server_192_168_0_1, 'tcp', 22).
+networkServiceInfo(server_192_168_0_1, 'ssh', 'tcp', 22, 'd').
+
+hacl(internet, server_192_168_0_1, 'tcp', 80).
+networkServiceInfo(server_192_168_0_1, 'http', 'tcp', 80, 'config').
+
+hacl(internet, server_192_168_0_1, 'tcp', 1900).
+networkServiceInfo(server_192_168_0_1, 'upnp', 'tcp', 1900, 'd').
+
+hacl(internet, server_192_168_0_1, 'tcp', 49152).
+networkServiceInfo(server_192_168_0_1, 'http', 'tcp', 49152, 'config').
+
+hacl(internet, server_192_168_0_100, 'tcp', 8008).
+networkServiceInfo(server_192_168_0_100, 'http?', 'tcp', 8008, '').
+
+hacl(internet, server_192_168_0_100, 'tcp', 8009).
+networkServiceInfo(server_192_168_0_100, 'ssl/castv2', 'tcp', 8009, 'Ninja').
+
+hacl(internet, server_192_168_0_100, 'tcp', 8443).
+networkServiceInfo(server_192_168_0_100, 'ssl/https-alt?', 'tcp', 8443, '').
+
+hacl(internet, server_192_168_0_100, 'tcp', 9000).
+networkServiceInfo(server_192_168_0_100, 'ssl/cslistener?', 'tcp', 9000, '').
+
+hacl(internet, server_192_168_0_104, 'tcp', 8008).
+networkServiceInfo(server_192_168_0_104, 'http?', 'tcp', 8008, '').
+
+hacl(internet, server_192_168_0_104, 'tcp', 8009).
+networkServiceInfo(server_192_168_0_104, 'ssl/ajp13?', 'tcp', 8009, '').
+
+hacl(internet, server_192_168_0_104, 'tcp', 8443).
+networkServiceInfo(server_192_168_0_104, 'ssl/https-alt?', 'tcp', 8443, '').
+
+hacl(internet, server_192_168_0_104, 'tcp', 9000).
+networkServiceInfo(server_192_168_0_104, 'ssl/cslistener?', 'tcp', 9000, '').
+
+hacl(internet, server_192_168_0_104, 'tcp', 10001).
+networkServiceInfo(server_192_168_0_104, 'ssl/scp-config?', 'tcp', 10001, '').
+
+hacl(internet, server_192_168_0_107, 'tcp', 135).
+networkServiceInfo(server_192_168_0_107, 'msrpc', 'tcp', 135, 'Microsoft').
+
+hacl(internet, server_192_168_0_107, 'tcp', 139).
+networkServiceInfo(server_192_168_0_107, 'netbios-ssn', 'tcp', 139, '').
+
+hacl(internet, server_192_168_0_107, 'tcp', 445).
+networkServiceInfo(server_192_168_0_107, 'microsoft-ds?', 'tcp', 445, '').
+
