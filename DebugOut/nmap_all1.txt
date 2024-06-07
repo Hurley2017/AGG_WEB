@@ -1,10 +1,9 @@
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-06-07 14:23 India Standard Time
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-06-07 15:08 India Standard Time
 Nmap scan report for 192.168.0.1
-Host is up (0.013s latency).
+Host is up (0.0086s latency).
 Not shown: 998 closed tcp ports (reset)
 PORT      STATE SERVICE VERSION
 80/tcp    open  http    Boa HTTPd 0.94.14rc21
-|_http-server-header: Boa/0.94.14rc21
 | vulners: 
 |   cpe:/a:boa:boa:0.94.14rc21: 
 |     	CVE-2018-21027	9.8	https://vulners.com/cve/CVE-2018-21027
@@ -13,27 +12,16 @@ PORT      STATE SERVICE VERSION
 |     	CVE-2022-45956	5.3	https://vulners.com/cve/CVE-2022-45956
 |     	PRION:CVE-2022-45956	5.0	https://vulners.com/prion/PRION:CVE-2022-45956
 |_    	PRION:CVE-2018-21028	5.0	https://vulners.com/prion/PRION:CVE-2018-21028
+|_http-server-header: Boa/0.94.14rc21
 52869/tcp open  upnp    MiniUPnP
 MAC Address: C4:12:F5:71:81:E6 (D-Link International)
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 17.25 seconds
+Nmap done: 1 IP address (1 host up) scanned in 7.62 seconds
 
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-06-07 14:23 India Standard Time
-Nmap scan report for 192.168.0.151
-Host is up (0.011s latency).
-Not shown: 998 closed tcp ports (reset)
-PORT     STATE SERVICE VERSION
-5000/tcp open  rtsp    AirTunes rtspd 760.20.1
-7000/tcp open  rtsp    AirTunes rtspd 760.20.1
-MAC Address: 18:3E:EF:F3:C5:20 (Apple)
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 36.62 seconds
-
-Starting Nmap 7.94 ( https://nmap.org ) at 2024-06-07 14:24 India Standard Time
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-06-07 15:08 India Standard Time
 Nmap scan report for 192.168.0.152
-Host is up (0.00043s latency).
+Host is up (0.00011s latency).
 Not shown: 997 closed tcp ports (reset)
 PORT    STATE SERVICE       VERSION
 135/tcp open  msrpc         Microsoft Windows RPC
@@ -42,4 +30,4 @@ PORT    STATE SERVICE       VERSION
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 7.04 seconds
+Nmap done: 1 IP address (1 host up) scanned in 6.58 seconds

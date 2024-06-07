@@ -2,22 +2,16 @@ attackerLocated(internet).
 attackGoal(execCode(server_192_168_0_1,_)).
 
 hacl(internet, server_192_168_0_1, 'tcp', 80).
-vulExists(server_192_168_0_1, 'CVE-2022-45956', 'http').
-vulProperty('CVE-2022-45956', remoteExploit, privEscalation).
 vulExists(server_192_168_0_1, 'CVE-2018-21027', 'http').
 vulProperty('CVE-2018-21027', remoteExploit, privEscalation).
 vulExists(server_192_168_0_1, 'CVE-2018-21028', 'http').
 vulProperty('CVE-2018-21028', remoteExploit, privEscalation).
+vulExists(server_192_168_0_1, 'CVE-2022-45956', 'http').
+vulProperty('CVE-2022-45956', remoteExploit, privEscalation).
 networkServiceInfo(server_192_168_0_1, 'http', 'tcp', 80, 'Boa').
 
 hacl(internet, server_192_168_0_1, 'tcp', 52869).
 networkServiceInfo(server_192_168_0_1, 'upnp', 'tcp', 52869, 'MiniUPnP').
-
-hacl(internet, server_192_168_0_151, 'tcp', 5000).
-networkServiceInfo(server_192_168_0_151, 'rtsp', 'tcp', 5000, 'd').
-
-hacl(internet, server_192_168_0_151, 'tcp', 7000).
-networkServiceInfo(server_192_168_0_151, 'rtsp', 'tcp', 7000, 'd').
 
 hacl(internet, server_192_168_0_152, 'tcp', 135).
 networkServiceInfo(server_192_168_0_152, 'msrpc', 'tcp', 135, 'Microsoft').

@@ -177,7 +177,7 @@ class Console():
                 Scan_Result.append(os.popen(f"nmap -sV --script={Check_Nmap} {Ip}").read())
 
             Scan_Result = "\n".join(Scan_Result)
-
+            Scan_Result += '__CON__'+str(K)+'\n'+Target
             File = open("DebugOut/nmap_all.txt", "w")
             File.write(Scan_Result)
             File.close()

@@ -1,10 +1,7 @@
-# Nmap 7.94 scan initiated Fri Jun  7 14:23:12 2024 as: nmap -sP -oN DebugOut/Nmap_scan.txt 192.168.0.152/24
+# Nmap 7.94 scan initiated Fri Jun  7 15:07:54 2024 as: nmap -sP -oN DebugOut/Nmap_scan.txt 192.168.0.152/24
 Nmap scan report for 192.168.0.1
-Host is up (0.053s latency).
+Host is up (0.023s latency).
 MAC Address: C4:12:F5:71:81:E6 (D-Link International)
-Nmap scan report for 192.168.0.151
-Host is up (0.17s latency).
-MAC Address: 18:3E:EF:F3:C5:20 (Apple)
 Nmap scan report for 192.168.0.152
 Host is up.
-# Nmap done at Fri Jun  7 14:23:35 2024 -- 256 IP addresses (3 hosts up) scanned in 22.32 seconds
+# Nmap done at Fri Jun  7 15:08:03 2024 -- 256 IP addresses (2 hosts up) scanned in 9.37 seconds

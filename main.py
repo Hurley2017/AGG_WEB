@@ -30,11 +30,13 @@ def pNessus():
 @app.route("/Nmap", methods=['POST'])
 def pNmap():
     data = request.json
-    data = data['data']
+    Content = data['data']
+    Config = Content.split('__CON__')[1]
+    K, Target = Config.split('\n')
     file = open('DebugOut/nmap_all1.txt', 'w')
-    file.write(data)
+    file.write(Content.split('__CON__')[0])
     file.close()
-    os.system(f'python mulval_inp_gen.py DebugOut/nmap_all1.txt')
+    os.system(f'python mulval_inp_gen.py {Target}')
 
     File = open("DebugOut/attack.P", "r")
     Content = File.read()
