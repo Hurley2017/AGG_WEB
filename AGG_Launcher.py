@@ -102,12 +102,12 @@ class Console():
         The Nessus scan is proprietary software and cannot be scripted to run here. 
         However, the UI accepts a Nessus scan to generate an attack graph.'''
         
-        self.Update_Console(self.Curr_Data)
+        # self.Update_Console(self.Curr_Data)
 
-    def Update_Console(self, WData):
-        self.Curr_Data += WData
-        WData += '\n\t----------------------------------------------------------------------\n'
-        self.Console_Out.insert('end', WData)
+    # def Update_Console(self, WData):
+    #     self.Curr_Data += WData
+    #     WData += '\n\t----------------------------------------------------------------------\n'
+    #     self.Console_Out.insert('end', WData)
 
     def Start_Engine(self):
         self.Main.mainloop()
@@ -126,7 +126,7 @@ class Console():
             self.server = make_server(self.Local_Host, self.Local_Port, self.FServer)
             self.server.serve_forever() 
         except Exception as e:
-            self.Update_Console('\tError in Main Process: '+str(e))
+            # self.Update_Console('\tError in Main Process: '+str(e))
             self.Update_Console('\tMain Process Failed...\n\t'+self.PTrace(traceback.format_exc()))
 
     def Start_Nmap_Scan(self):
@@ -135,7 +135,7 @@ class Console():
 
     def Invoke_Nmap_Scan(self):
         try:
-            self.Update_Console('\tStarting Nmap Scan...')
+            # self.Update_Console('\tStarting Nmap Scan...')
             self.NMap_Button = Button(self.Button_Frame, text='Scanning', width=15, height=1, command=self.show_Busy,font=('courier', 15, "bold"), fg='white', bg='darkorange')
             self.NMap_Button.place(x=14+605, y=14)
             K = self.K_Entry.get()
@@ -144,16 +144,18 @@ class Console():
             Target = self.Target_Entry.get()
             if CIDR == '/':
                 CIDR = self.Local_Host+'/24'
-                self.Update_Console(f'\tCIDR not specified. Default CIDR({CIDR}) will be considered...')
+                # self.Update_Console(f'\tCIDR not specified. Default CIDR({CIDR}) will be considered...')
             if K == None:
-                self.Update_Console('\tMax Vuln not specified. All vulnerabilities will be considered...')
+                pass
+                # self.Update_Console('\tMax Vuln not specified. All vulnerabilities will be considered...')
             if Target == '':                  
                 Target = self.Local_Host 
-                self.Update_Console(f'\tTarget not specified. Default target({Target}), Current host will be considered...') 
+                # self.Update_Console(f'\tTarget not specified. Default target({Target}), Current host will be considered...') 
             self.Nmap_SCAN(CIDR, Target, K)
         except Exception as e:
-            self.Update_Console('\tError in Nmap Scan : '+str(e))
-            self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))  
+            pass
+            # self.Update_Console('\tError in Nmap Scan : '+str(e))
+            # self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))  
         finally:
             self.NMap_Button = Button(self.Button_Frame, text='Nmap Scan', width=15, height=1, command=self.Start_Nmap_Scan,font=('courier', 15, "bold"), fg='white', bg='blue')
             self.NMap_Button.place(x=14+605, y=14)      
@@ -168,12 +170,12 @@ class Console():
             File.close()
             Data = Data.split("\n")[1:]
             Data = [D.split(' ')[-1].strip('(').strip(')') for D in Data if ".".join(CIDR.split(".")[:-1]) in D]
-            self.Update_Console(f'\tFound {len(Data)} Alive Hosts in the network...')
-            self.Update_Console(f'\tHosts Alive : {",\n\t\t\t".join(Data)}')
-            self.Update_Console('\tScanning for Vulnerabilities...')
+            # self.Update_Console(f'\tFound {len(Data)} Alive Hosts in the network...')
+            # self.Update_Console(f'\tHosts Alive : {",\n\t\t\t".join(Data)}')
+            # self.Update_Console('\tScanning for Vulnerabilities...')
             Scan_Result = []
             for Ip in Data:
-                self.Update_Console(f'\tScanning {Ip}')
+                # self.Update_Console(f'\tScanning {Ip}')
                 Scan_Result.append(os.popen(f"nmap -sV --script={Check_Nmap} {Ip}").read())
 
             Scan_Result = "\n".join(Scan_Result)
@@ -181,60 +183,64 @@ class Console():
             File = open("DebugOut/nmap_all.txt", "w")
             File.write(Scan_Result)
             File.close()
-            self.Update_Console('\tNmap Scan Completed...')
-            self.Update_Console(f'\tGenerating MulVAL input for {Target} ...')
+            # self.Update_Console('\tNmap Scan Completed...')
+            # self.Update_Console(f'\tGenerating MulVAL input for {Target} ...')
             os.system(f"python mulval_inp_gen.py {Target}")
-            self.Update_Console('\tattack.P generated for MulVAL...')
+            # self.Update_Console('\tattack.P generated for MulVAL...')
             if K != None:
-                self.Update_Console('\tMulVAL input file will be truncated as per Max Vuln...')
+                # self.Update_Console('\tMulVAL input file will be truncated as per Max Vuln...')
                 os.system(f"python truncate_attackP.py {K}")
-            self.Update_Console('\tNmap Scan Please check DebugOut Folder...')    
+            # self.Update_Console('\tNmap Scan Please check DebugOut Folder...')    
             messagebox.showinfo('Successful','Output can be found in DebugOut folder.')    
         except Exception as e:
-            self.Update_Console('\tError in Nmap Scan : '+str(e))
-            self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))
+            pass
+            # self.Update_Console('\tError in Nmap Scan : '+str(e))
+            # self.Update_Console('\tNmap Scan Failed...\n\t'+self.PTrace(traceback.format_exc()))
     
 
     def Github_Process(self):
         try:
-            self.Update_Console('\tOpening Github Page...')
+            # self.Update_Console('\tOpening Github Page...')
             os.system('start https://github.com/Hurley2017/AGG_WEB')
         except Exception as e:
-            self.Update_Console('\tError Test : '+str(e))
-            self.Update_Console('\tGithub Process Failed...\n\t'+self.PTrace(traceback.format_exc()))  
+            pass
+            # self.Update_Console('\tError Test : '+str(e))
+            # self.Update_Console('\tGithub Process Failed...\n\t'+self.PTrace(traceback.format_exc()))  
 
 
     def Start_Process(self):
         try:
             if self.Alive:
-                self.Update_Console('\tEngine Already Running...')
+                # self.Update_Console('\tEngine Already Running...')
                 messagebox.showwarning('Server is Alive', 'Dismiss the alert to open the default browser.')
                 os.system('start http://'+self.Local_Host+':'+self.Local_Port+'/')
                 return
             else:
-                self.Update_Console('\tStarting Engine...'+'\n\tLocal Host : '+self.Local_Host+'\n\tLocal Port : '+self.Local_Port+'\n\tDialing Engine (Check default browser)...')
+                # self.Update_Console('\tStarting Engine...'+'\n\tLocal Host : '+self.Local_Host+'\n\tLocal Port : '+self.Local_Port+'\n\tDialing Engine (Check default browser)...')
                 os.system('start http://'+self.Local_Host+':'+self.Local_Port+'/')
                 self.Main_T.start()
         except Exception as e:
-            self.Update_Console('\tError in Process : '+str(e))
-            self.Update_Console('\tStarting Engine Failed...\n\t'+self.PTrace(traceback.format_exc()))  
+            pass
+            # self.Update_Console('\tError in Process : '+str(e))
+            # self.Update_Console('\tStarting Engine Failed...\n\t'+self.PTrace(traceback.format_exc()))  
 
     def Stop_Process(self):
         try:
             if not self.Alive:
-                self.Update_Console('\tEngine is not running...')
+                # self.Update_Console('\tEngine is not running...')
                 messagebox.showwarning('Error', 'Server is not alive.')
                 return 
             else:
-                self.Update_Console('\tStopping Engine...')
+                # self.Update_Console('\tStopping Engine...')
                 self.Alive = False
                 self.server.shutdown()
                 self.Main_T.join()
                 self.Main_T = Thread(target=self.Main_Process)
-                self.Update_Console('\tServer stopped...')
+                # self.Update_Console('\tServer stopped...')
         except Exception as e:
-            self.Update_Console('\tError Test : '+str(e)) 
-            self.Update_Console('\tFatal Error...\n\t'+self.PTrace(traceback.format_exc()))         
+            pass
+            # self.Update_Console('\tError Test : '+str(e)) 
+            # self.Update_Console('\tFatal Error...\n\t'+self.PTrace(traceback.format_exc()))         
 
 if __name__ == "__main__":
     Instance = Console(app)
