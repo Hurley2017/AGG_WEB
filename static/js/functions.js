@@ -28,6 +28,7 @@ function Browse_Send_Nessus()
             .then((response) => response.json())
             .then((data) => document.getElementById('Nesout').innerHTML='Successful, please check home folder.')
             .catch((error) => console.error("Error:", error));
+
     
                 }
     }
@@ -64,12 +65,10 @@ function Browse_Send_Nmap()
         body: JSON.stringify(data)
         })
         .then((response) => response.json())
-        .then((data) => document.getElementById('Mapout').innerHTML='Successful, please check home folder.')
+        .then((data) => document.getElementById('MapPDF').innerHTML=`<div class='row gx-0 mb-5 mb-lg-0 justify-content-center'><iframe class='pdf_Proper' id='inlineFrameExample' title='Inline Frame Example' width='300' height='300' src="static/assets/AG.pdf"> </iframe> <br> <br> <hr> <hr> </div>`)
         .catch((error) => console.error("Error:", error));
-
-            }
-    
-
+        }
+        
     }
 
     input.click();

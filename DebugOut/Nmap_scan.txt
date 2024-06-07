@@ -1,16 +1,10 @@
-# Nmap 7.94 scan initiated Sun May 26 14:23:36 2024 as: nmap -sP -oN DebugOut/Nmap_scan.txt 192.168.0.107/24
+# Nmap 7.94 scan initiated Fri Jun  7 14:23:12 2024 as: nmap -sP -oN DebugOut/Nmap_scan.txt 192.168.0.152/24
 Nmap scan report for 192.168.0.1
-Host is up (0.019s latency).
-MAC Address: 98:DE:D0:BD:AA:6E (TP-Link Technologies)
-Nmap scan report for 192.168.0.100
-Host is up (0.092s latency).
-MAC Address: B4:60:77:42:BB:D2 (Sichuan Changhong Electric)
-Nmap scan report for 192.168.0.102
-Host is up (0.091s latency).
-MAC Address: 72:E3:01:A8:FC:85 (Unknown)
-Nmap scan report for 192.168.0.104
-Host is up (0.088s latency).
-MAC Address: 20:50:E7:97:6C:58 (Ampak Technology)
-Nmap scan report for 192.168.0.107
+Host is up (0.053s latency).
+MAC Address: C4:12:F5:71:81:E6 (D-Link International)
+Nmap scan report for 192.168.0.151
+Host is up (0.17s latency).
+MAC Address: 18:3E:EF:F3:C5:20 (Apple)
+Nmap scan report for 192.168.0.152
 Host is up.
-# Nmap done at Sun May 26 14:23:40 2024 -- 256 IP addresses (5 hosts up) scanned in 3.95 seconds
+# Nmap done at Fri Jun  7 14:23:35 2024 -- 256 IP addresses (3 hosts up) scanned in 22.32 seconds

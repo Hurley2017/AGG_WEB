@@ -42,7 +42,7 @@ def pNmap():
 
     Response = requests.post(url, data=Content)
 
-    File = open("DebugOut/AG.pdf", "wb")
+    File = open("static/assets/AG.pdf", "wb")
     File.write(Response.content)
     File.close()
 

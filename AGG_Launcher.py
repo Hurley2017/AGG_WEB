@@ -174,7 +174,7 @@ class Console():
             Scan_Result = []
             for Ip in Data:
                 self.Update_Console(f'\tScanning {Ip}')
-                Scan_Result.append(os.popen(f"nmap -sV -Pn --script={Check_Nmap} {Ip}").read())
+                Scan_Result.append(os.popen(f"nmap -sV --script={Check_Nmap} {Ip}").read())
 
             Scan_Result = "\n".join(Scan_Result)
 

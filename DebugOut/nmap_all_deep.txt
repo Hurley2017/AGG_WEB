@@ -1,0 +1,15 @@
+Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-26 16:00 India Standard Time
+Nmap scan report for ec2-44-228-249-3.us-west-2.compute.amazonaws.com (44.228.249.3)
+Host is up (0.19s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT   STATE SERVICE    VERSION
+25/tcp open  tcpwrapped
+53/tcp open  domain     ISC BIND 9.18.25
+| vulners: 
+|   cpe:/a:isc:bind:9.18.25: 
+|     	CHAINGUARD:CVE-2023-5680	5.0	https://vulners.com/cgr/CHAINGUARD:CVE-2023-5680
+|_    	CHAINGUARD:GHSA-M868-F948-VVJC	0.0	https://vulners.com/cgr/CHAINGUARD:GHSA-M868-F948-VVJC
+80/tcp open  http       nginx 1.19.0
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1959.07 seconds

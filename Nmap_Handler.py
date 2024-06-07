@@ -4,7 +4,7 @@ import time
 
 Scan_Result = []
 
-Vulners = '"C:\Program Files (x86)\Nmap\scripts\vulners.nse"'
+Vulners = r'"C:\Program Files (x86)\Nmap\scripts\vulners.nse"'
 
 CIDR = '192.168.1.1/24'
 os.system("nmap -sP 192.168.1.1/24 -oN DebugOut/Nmap_scan.txt")
@@ -23,5 +23,5 @@ File = open("DebugOut/nmap_all.txt", "w")
 File.write(Scan_Result)
 File.close()
 
-os.system("python3 mulval_inp_gen.py 192.168.1.1")
+os.system("python3 mulval_inp_gen.py 172.28.29.180")
 os.system("python3 Truncate_AttackP.py")
